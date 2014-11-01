@@ -1,0 +1,7 @@
+main: me.pauzen.forceopblocker.Main
+name: ForceOpBlocker
+version: 1.0
+author: Filip.
+description: Blocks force op plugins.
+commands:
+  allow:
