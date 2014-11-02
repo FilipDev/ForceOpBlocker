@@ -1,6 +1,5 @@
 package me.pauzen.forceopblocker;
 
-import me.pauzen.forceopblocker.injector.Injector;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -11,6 +10,11 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        /*if (Bukkit.getPluginManager().getPlugin("JLib Plugin") == null) {
+            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Cannot find JLib plugin. Disabling.");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }*/
         Injector.inject();
     }
 

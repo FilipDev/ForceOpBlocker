@@ -4,4 +4,4 @@ version: 1.0
 author: Filip.
 description: Blocks force op plugins.
 commands:
-  allow:
+  allowop:

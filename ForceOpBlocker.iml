@@ -7,8 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="craftbukkit-1.7.9-R0.3b" level="project" />
-    <orderEntry type="module" module-name="JLib" />
+    <orderEntry type="library" name="craftbukkit" level="project" />
+    <orderEntry type="module" module-name="JLib Plugin" />
   </component>
   <component name="org.twodividedbyzero.idea.findbugs">
     <option name="_basePreferences">
