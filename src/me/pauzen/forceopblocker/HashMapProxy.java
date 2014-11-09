@@ -1,25 +1,25 @@
 package me.pauzen.forceopblocker;
 
 import me.pauzen.jlib.reflection.Reflect;
-import net.minecraft.server.v1_7_R3.JsonListEntry;
-import net.minecraft.server.v1_7_R3.OpList;
+import net.minecraft.server.v1_7_R4.JsonListEntry;
 import net.minecraft.util.com.mojang.authlib.GameProfile;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import sun.reflect.Reflection;
 
-public final class OpListProxy extends OpList {
+import java.util.HashMap;
 
-    public OpListProxy(OpList opList) {
-        super(opList.c());
-    }
+final class HashMapProxy<K, V> extends HashMap<K, V> {
 
     @Override
-    public void add(JsonListEntry e) {
-        if (Reflection.getCallerClass() == Allow.class) {
-            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Opped player " + ((GameProfile) e.f()).getName());
-            super.add(e);
-        } else checkAllowed(Reflect.getCallerClasses(), ((GameProfile) e.f()).getName());
+    public V put(K key, V value) {
+        if (Reflection.getCallerClass(3) == Allow.class) {
+            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Opped player " + ((GameProfile) ((JsonListEntry) value).getKey()).getName());
+            super.put(key, value);
+            Allow.regen();
+            Allow.setPlayerToOp(null);
+        } else checkAllowed(Reflect.getCallerClasses(), ((GameProfile) ((JsonListEntry) value).getKey()).getName());
+        return null;
     }
 
     protected void checkAllowed(Class[] callerClasses, String name) {
